@@ -9,8 +9,9 @@ exports.getsignup = (req, res) => {
 exports.postsignup = (req, res) => {
   const { username, email, password } = req.body;
   const passwordEncrypt = encrypt.encode(password);
-  sqlquery.verifyUser(username, (userExits) => {
-    if (!userExits) {
+  sqlquery
+    .verifyUser(username)
+    .then(() => {
       sqlquery.insertIntoTable(
         "users",
         "user_name",
@@ -20,23 +21,12 @@ exports.postsignup = (req, res) => {
         email,
         passwordEncrypt
       );
-      res.status(201).json("user Created: " + username);
-      console.log("user Created: " + username);
-    } else {
-      res
-        .status(404)
-        .json(
-          "user: " +
-            username +
-            " already exists:: try again with another username.. "
-        );
-      console.log(
-        "user: " +
-          username +
-          " already exists:: try again with another username.. "
-      );
-    }
-  });
+      res.status(201).json("user: " + username + " inserted successfully ");
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(404).json(error);
+    });
 };
 
 exports.getlogin = (req, res) => {};

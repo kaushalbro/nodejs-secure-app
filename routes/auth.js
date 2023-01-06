@@ -2,7 +2,7 @@ const express = require("express");
 const authRouter = express.Router();
 const authController = require("../controllers/authController");
 
-//get route
+//get route old methods
 // authRouter.get("/auth/login", authController.login);
 // authRouter.get("/auth/signup", authController.signup);
 // authRouter.get("/auth/logout", authController.logout);

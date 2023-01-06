@@ -4,15 +4,7 @@ const db = require("./db_config");
 //this file get data from database:
 
 //getting all data from specific table
-exports.getall = (tableName, tableData) => {
-  // const sql = "select * from ??";
-  // db.query(sql, [tableName], (error, result) => {
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  //   tableData(result);
-  // });
-
+exports.getall = (tableName) => {
   return new Promise((resolve, reject) => {
     const sql = "select * from ??";
     db.query(sql, [tableName], (error, result) => {
@@ -25,24 +17,28 @@ exports.getall = (tableName, tableData) => {
 };
 
 //getting one data from specific table using where
-exports.getOne = (tableName, columnName, value, indivisualResult) => {
-  const sql = "select * from ?? where ?? =?";
-  db.query(sql, [tableName, columnName, value], (error, result) => {
-    if (error) {
-      console.log(error);
-    }
-    indivisualResult(result);
+exports.getOne = (tableName, columnName, value) => {
+  return new Promise((reslove, reject) => {
+    const sql = "SELECT * FROM ?? WHERE ?? = ?";
+    db.query(sql, [tableName, columnName, value], (error, result) => {
+      if (error) {
+        reject(error);
+      }
+      reslove(result);
+    });
   });
 };
 
 exports.insertIntoTable = (tableName, ...params) => {
-  sql = insertQuery(tableName, ...params);
-  db.query(sql, [...params], (error) => {
-    if (error) {
-      console.log(error);
-    }
-    isInserted = true;
-    console.log("user registered");
+  return new Promise((resolve, reject) => {
+    sql = insertQuery(tableName, ...params);
+    db.query(sql, [...params], (error) => {
+      if (error) {
+        reject("error while inserting new record...: " + error);
+      }
+      resolve(true);
+      console.log("user registered");
+    });
   });
 };
 
@@ -73,14 +69,19 @@ const insertQuery = (tableName, ...params) => {
   return sql;
 };
 
-exports.verifyUser = (userName, isUser) => {
-  this.getOne("users", "user_name", userName, (result) => {
-    if (result.length > 0) {
-      isUser(true);
-    } else {
-      console.log("user Not Found");
-      isUser(false);
-    }
+exports.verifyUser = (userName) => {
+  return new Promise((resolve, reject) => {
+    //geton is also promises
+    this.getOne("users", "user_name", userName).then((result) => {
+      if (result.length > 0) {
+        console.log(result.length + " user found");
+        console.log("already exists:: try again with another username..  ");
+        reject("already exists:: try again with another username.. ");
+      } else {
+        console.log(result.length + " user checked: no user found");
+        resolve(true);
+      }
+    });
   });
 };
 
