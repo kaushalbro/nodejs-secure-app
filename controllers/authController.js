@@ -21,7 +21,7 @@ exports.postsignup = (req, res) => {
         passwordEncrypt
       );
       res.status(201).json("user Created: " + username);
-      console.log("user registered: " + username);
+      console.log("user Created: " + username);
     } else {
       res
         .status(404)
@@ -47,9 +47,7 @@ exports.postlogin = (req, res) => {
     if (isVerified) {
       res.status(201).json("valid user loggd in.....");
     } else {
-      res
-        .status(404)
-        .json("unvalid: username or password doesn't matched.....");
+      res.status(404).json("unvalid: username or password doesnt matched.....");
     }
   });
 };

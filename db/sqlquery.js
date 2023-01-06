@@ -3,23 +3,20 @@ const db = require("./db_config");
 //gets data and forward
 //this file get data from database:
 
-//getting all data from specific table using callback function
-// exports.getall = (tableName, tableData) => {
-//   const sql = "select * from ??";
-//   db.query(sql, [tableName], (error, result) => {
-//     if (error) {
-//       console.log(error);
-//     }
-//     tableData(result);
-//   });
-// };
+//getting all data from specific table
+exports.getall = (tableName, tableData) => {
+  // const sql = "select * from ??";
+  // db.query(sql, [tableName], (error, result) => {
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  //   tableData(result);
+  // });
 
-exports.getall = (tableName) => {
   return new Promise((resolve, reject) => {
     const sql = "select * from ??";
     db.query(sql, [tableName], (error, result) => {
       if (error) {
-        console.log(error);
         reject(error);
       }
       resolve(result);
@@ -28,16 +25,13 @@ exports.getall = (tableName) => {
 };
 
 //getting one data from specific table using where
-exports.getOne = (tableName, columnName, value) => {
-  return new Promise((resolve, reject) => {
-    const sql = "select * from ?? where ?? =?";
-    db.query(sql, [tableName, columnName, value], (error, result) => {
-      if (error) {
-        console.log(error);
-        reject("cannot get user....");
-      }
-      resolve(result);
-    });
+exports.getOne = (tableName, columnName, value, indivisualResult) => {
+  const sql = "select * from ?? where ?? =?";
+  db.query(sql, [tableName, columnName, value], (error, result) => {
+    if (error) {
+      console.log(error);
+    }
+    indivisualResult(result);
   });
 };
 
