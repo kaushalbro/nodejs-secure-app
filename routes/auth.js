@@ -12,7 +12,6 @@ authRouter
   .get("/auth/login", authController.getlogin)
   .post("/auth/login", authController.postlogin)
   .get("/auth/signup", authController.getsignup)
-  .post("/auth/signup", authController.postsignup)
   .get("/auth/logout", authController.logout);
 //post route
 // authRouter.post('/auth/login',authController.);

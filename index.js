@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
   res.render("./home");
 });
 
-app.use(authRouter);
-app.use(userRouter);
+app.use("/api/", authRouter);
+app.use("/api/", userRouter);
 
 app.listen(dotenv.port, () => {
   console.log("server is running at port 3000");
