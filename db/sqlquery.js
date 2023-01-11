@@ -76,7 +76,7 @@ exports.verifyUserNamePassword = (userName, rawPassword) => {
         if (isUser) {
           return this.getbyOne("users", "user_name", userName);
         } else {
-          reject("Invalid username: " + userName + " No username found .....");
+          reject(+userName + " username found .....");
         }
       })
       .then((result) => {

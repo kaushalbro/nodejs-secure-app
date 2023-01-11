@@ -25,7 +25,7 @@ exports.postlogin = (req, res) => {
         res.status(404).json(error);
       });
   } else {
-    res.status(404).json(checkEmptyField);
+    res.status(404).json(fieldValue);
   }
 };
 exports.logout = (req, res) => {
