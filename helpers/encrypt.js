@@ -2,13 +2,23 @@ const bcryptjs = require("bcryptjs");
 
 //using sync method
 exports.encode = (password) => {
-  const salt = bcryptjs.genSaltSync(9);
-  const hash = bcryptjs.hashSync(password, salt);
-  return hash;
+  return new Promise((resolve, reject) => {
+    const salt = bcryptjs.genSaltSync(9);
+    const hash = bcryptjs.hashSync(password, salt);
+    resolve(hash);
+    reject("can't encrypt password..");
+  });
 };
 
 //using sync method
 exports.verify = (rawpassword, hashedPasswordFromDB) => {
+  return new Promise((resolve, reject) => {
+    if (bcryptjs.compareSync(rawpassword, hashedPasswordFromDB)) {
+      resolve();
+    } else {
+      reject("password does not matched...");
+    }
+  });
   return bcryptjs.compareSync(rawpassword, hashedPasswordFromDB);
 };
 
