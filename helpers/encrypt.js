@@ -14,12 +14,11 @@ exports.encode = (password) => {
 exports.verify = (rawpassword, hashedPasswordFromDB) => {
   return new Promise((resolve, reject) => {
     if (bcryptjs.compareSync(rawpassword, hashedPasswordFromDB)) {
-      resolve();
+      resolve(true);
     } else {
       reject("password does not matched...");
     }
   });
-  return bcryptjs.compareSync(rawpassword, hashedPasswordFromDB);
 };
 
 // using async method

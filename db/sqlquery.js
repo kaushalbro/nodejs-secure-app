@@ -1,4 +1,5 @@
 // const encrypt = require("../helpers/encrypt");
+const enctypt = require("../helpers/encrypt");
 const db = require("./db_config");
 //gets data and forward
 //this file get data from database:
@@ -17,12 +18,15 @@ exports.getall = (tableName) => {
 };
 
 //getting one data from specific table using where
-exports.getbyOne = (tableName, fildname, value) => {
+exports.getbyOne = (tableName, fieldname, value) => {
   return new Promise((resolve, reject) => {
     const sql = "select * from ?? WHERE ?? = ?";
-    db.query(sql, [tableName, fildname, value], (error, result) => {
+    db.query(sql, [tableName, fieldname, value], (error, result) => {
       if (error) {
-        reject(error);
+        reject(
+          "error while quering userbyone +++++++++++++++++++++++++++++++" +
+            error
+        );
       }
       resolve(result);
     });
@@ -53,35 +57,53 @@ exports.isUser = (username) => {
           //if there is user return true
           resolve(true);
         }
+        // reject("no user with user " + username + " found");
       })
       //if there is occur came while execurting the command or queruy reject with error
       .catch((error) => {
-        reject("error while quering +++++++++++++++++++++++++++++++" + error);
+        reject(error);
       });
   });
 };
 
-exports.verifyUserNamePassword = (userName, rawPassword, isValidUser) => {
-  this.isUser(userName).then((result) => {
-    console.log(result);
+exports.verifyUserNamePassword = (userName, rawPassword) => {
+  return new Promise((resolve, reject) => {
+    this.isUser(userName)
+      .then((isUser) => {
+        return isUser;
+      })
+      .then((isUser) => {
+        if (isUser) {
+          return this.getbyOne("users", "user_name", userName);
+        } else {
+          reject("Invalid username: " + userName + " No username found .....");
+        }
+      })
+      .then((result) => {
+        return enctypt.verify(rawPassword, result[0].password);
+      })
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => reject(error));
   });
-  // this.verifyUser(userName, (isUser) => {
-  //   if (isUser) {
-  //     this.getOne("users", "user_name", userName, (result) => {
-  //       //result comes like [{user_id: 41, user_name: '11kello', user_email: 'hello1@gmail.com',user_role: 'user' }]
-  //       // so, i want to extract password from first index i do link result[0].password
-  //       const encryptedDBPassword = result[0].password;
-  //       if (encrypt.verify(rawPassword, encryptedDBPassword)) {
-  //         isValidUser(true);
-  //       } else {
-  //         isValidUser(false);
-  //       }
-  //     });
-  //   } else {
-  //     isValidUser(false);
-  //   }
-  // });
 };
+// this.verifyUser(userName, (isUser) => {
+//   if (isUser) {
+//     this.getOne("users", "user_name", userName, (result) => {
+//       //result comes like [{user_id: 41, user_name: '11kello', user_email: 'hello1@gmail.com',user_role: 'user' }]
+//       // so, i want to extract password from first index i do link result[0].password
+//       const encryptedDBPassword = result[0].password;
+//       if (encrypt.verify(rawPassword, encryptedDBPassword)) {
+//         isValidUser(true);
+//       } else {
+//         isValidUser(false);
+//       }
+//     });
+//   } else {
+//     isValidUser(false);
+//   }
+// });
 
 //for insert query only
 const createInsertQuery = (tableName, ...params) => {
