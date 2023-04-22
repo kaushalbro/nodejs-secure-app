@@ -1,0 +1,68 @@
+
+
+-------------------------------------------------------
+                           INITIALS
+-------------------------------------------------------
+1st- npm init
+2nd- npx license mit
+3rd- npx gitignore node
+4th- npx covgen
+5th- npm init -y
+
+to install express:
+ npm install express --save
+
+
+to install nodemon 
+ npm install nodemon -g
+ npm install nodemon --save
+ node mon Problem: 
+  AppData\Roaming\npm\nodemon.ps1 cannot be  
+  loaded because running scripts is disabled on this system.  
+  For more information, see about_Execution_Policies at
+  Solution powershell: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+to start server
+ nodemon server.js
+
+SHOTCUT:
+shift+enter : to go to new line
+-------------------------------------------------------
+                   code explaining
+-------------------------------------------------------
+command: npm install mysql
+
+sql server instlizing:
+steps:
+first of all we create folder dbConfig and file dbconfig.js insode it:
+then code for instlizing sql server:
+
+//dbconfig.js
+id not connected : uses on MYSQLBENCH: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'kaushal123' 
+
+var mysql = require('mysql');
+var db_con = mysql.createConnection({
+  host: "localhost:3306",    // ip address of server running mysql
+  user: "kaushal",    // user name to your mysql database
+  password: "password",    // corresponding password
+  database: "studentsDB"  // use this database to querying context
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------
+
+
+
+
