@@ -12,13 +12,13 @@
       (REFRESH_TOKEN OBJECT)
    |-> /api/refreshToken/ (GET)         :Get refresh token only if access token is provided and is valid  <br />
 
-   (Email verification route)  <br />
+      (EMAIL_VERIFICATION OBJECT)
    |-> /api/verify_email/:token (GET)   :Get sent token from user's mail and verify <br />
 
    
  
   # GET METHOD  <br />
-   (POSTS OBJECT)  <br />
+      (POST OBJECT)
  |-> /api/posts/                        :Get all Published posts  <br />
  |-> /api/posts/id/:id                  :getPublishedPostsById  <br />
  |-> /api/posts/author/:author_name     ::getAllPublishedPostsByAuthorName  <br />
@@ -50,10 +50,10 @@
 
 # POST METHOD
 
-     (For Posts object) <br />
+     (For Posts object)
  |-> /api/posts/                        :Create New post (Unautorized used cannot create post only admin and Editor can) <br />
  
-     (For USERS object) <br />
+     (For USERS object)
  |-> /api/users/                        :Create New User (Only by admin) <br />
 
       (CATEGORY OBJECT)
