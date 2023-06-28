@@ -4,10 +4,10 @@
 
   (AUTH routes)
 
-   |-> /api/auth/login (GET, POST)     :Get login page and POST user's credentials 
-   |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials 
-   |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials 
-   |-> /api/auth/logout (GET)           :Logout from current logged in session.
+   |-> /api/auth/login (GET, POST)     :Get login page and POST user's credentials  <br />
+   |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
+   |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
+   |-> /api/auth/logout (GET)           :Logout from current logged in session <br />
 
 
   (REFRESH_TOKEN route)
