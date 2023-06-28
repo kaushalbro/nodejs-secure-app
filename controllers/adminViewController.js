@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { host_url } = require("../configs/dotenv_config");
 
 // const fetch = require("node-fetch");
