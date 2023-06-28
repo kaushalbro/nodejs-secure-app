@@ -1,9 +1,8 @@
-﻿#nodejs-secure-app # BLOG API/E_NEWSPAPER API
+﻿# nodejs-secure-app # BLOG API/E_NEWSPAPER API
 
-#ROUTES
+# ROUTES
 
   (AUTH ROUTES)
-
    |-> /api/auth/login (GET, POST)     :Get login page and POST user's credentials  <br />
    |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
    |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
@@ -18,7 +17,7 @@
 
    
  
-  #GET METHOD  <br />
+  # GET METHOD  <br />
    (POSTS OBJECT)  <br />
  |-> /api/posts/                        :Get all Published posts  <br />
  |-> /api/posts/id/:id                  :getPublishedPostsById  <br />
@@ -49,7 +48,7 @@
  |-> /api/subscribers/:id        	:get subscriber by id  <br />
 
 
-#POST METHOD
+# POST METHOD
 
      (For Posts object) <br />
  |-> /api/posts/                        :Create New post (Unautorized used cannot create post only admin and Editor can) <br />
@@ -67,8 +66,24 @@
    (SUSCRIBER OBJECT)
  |-> /api/subscribers/                  :create new subscriber  <br />
 
+# PATCH METHOD
+     (For POSTS object)
+ |-> /api/posts/:id                     : Update only self published post for Editor level <br />
 
-#DELETE METHOD
+     (For USERS object)
+ |-> /api/users/:id                     :Update User By ID (Only by admin) <br />
+
+      (CATEGORY OBJECT)
+ |-> /api/category/:id                  :Update Category By ID (Only by admin) <br />
+
+      (ADVERTISEMENT OBJECT)
+ |-> /api/ads/:id                       :Update Advertisement by id  <br />
+
+ (SUSCRIBER OBJECT)
+ |-> /api/subscribers/:id               :Update Subscriber by id <br />
+
+ 
+# DELETE METHOD
      (For POSTS object)
  |-> /api/posts/id/:id                  : Delete only self published post for Editor level <br />
  
@@ -89,22 +104,6 @@
  |-> /api/subscribers/:id               :Delete Subscriber by id <br />
 
 
-
-#PATCH METHOD
-     (For POSTS object)
- |-> /api/posts/:id                     : Update only self published post for Editor level <br />
-
-     (For USERS object)
- |-> /api/users/:id                     :Update User By ID (Only by admin) <br />
-
-      (CATEGORY OBJECT)
- |-> /api/category/:id                  :Update Category By ID (Only by admin) <br />
-
-      (ADVERTISEMENT OBJECT)
- |-> /api/ads/:id                       :Update Advertisement by id  <br />
-
- (SUSCRIBER OBJECT)
- |-> /api/subscribers/:id               :Update Subscriber by id <br />
 
 
 
