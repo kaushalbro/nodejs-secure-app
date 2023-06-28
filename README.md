@@ -110,5 +110,6 @@
 
 |-> /api/ads/:id :Delete Advertisement by id <br />
 
-(SUSCRIBER OBJECT)
+      (SUBSCRIBER OBJECT)
+      
 |-> /api/subscribers/:id :Delete Subscriber by id <br />
