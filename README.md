@@ -10,16 +10,16 @@
    |-> /api/auth/logout (GET)           :Logout from current logged in session <br />
 
 
-  (REFRESH_TOKEN route)
-   |-> /api/refreshToken/ (GET)         :Get refresh token only if access token is provided and is valid
+  (REFRESH_TOKEN route)  <br />
+   |-> /api/refreshToken/ (GET)         :Get refresh token only if access token is provided and is valid  <br />
 
-   (Email verification route)
-   |-> /api/verify_email/:token (GET)   :Get sent token from user's mail and verify
+   (Email verification route)  <br />
+   |-> /api/verify_email/:token (GET)   :Get sent token from user's mail and verify <br />
 
    
  
-  #GET METHOD
-   (POSTS object)
+  #GET METHOD  <br />
+   (POSTS OBJECT)  <br />
  |-> /api/posts/                        :Get all Published posts
  |-> /api/posts/id/:id                  :getPublishedPostsById)
  |-> /api/posts/author/:author_name     ::getAllPublishedPostsByAuthorName
