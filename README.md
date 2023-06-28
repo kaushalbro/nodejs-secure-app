@@ -2,7 +2,7 @@
 
 #ROUTES
 
-  (AUTH routes)
+  (AUTH ROUTES)
 
    |-> /api/auth/login (GET, POST)     :Get login page and POST user's credentials  <br />
    |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
