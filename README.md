@@ -20,91 +20,91 @@
  
   #GET METHOD  <br />
    (POSTS OBJECT)  <br />
- |-> /api/posts/                        :Get all Published posts
- |-> /api/posts/id/:id                  :getPublishedPostsById)
- |-> /api/posts/author/:author_name     ::getAllPublishedPostsByAuthorName
- |-> /api/posts/category/:category_id   ::getAllPublishedPostsByCategoryID
- |-> /api/posts/category/:category_name ::getAllPublishedPostsByCategoryName(Not Yet implemented)
- |-> /api/posts/:year                   ::getAllPublishedPostsByYear
- |-> /api/posts/:year/:month            ::getAllPublishedPostsByMonth
- |-> /api/posts/:year/:month/:day       ::getAllPublishedPostsByDay
+ |-> /api/posts/                        :Get all Published posts  <br />
+ |-> /api/posts/id/:id                  :getPublishedPostsById  <br />
+ |-> /api/posts/author/:author_name     ::getAllPublishedPostsByAuthorName  <br />
+ |-> /api/posts/category/:category_id   ::getAllPublishedPostsByCategoryID <br />
+ |-> /api/posts/category/:category_name ::getAllPublishedPostsByCategoryName(Not Yet implemented) <br />
+ |-> /api/posts/:year                   ::getAllPublishedPostsByYear <br />
+ |-> /api/posts/:year/:month            ::getAllPublishedPostsByMonth <br />
+ |-> /api/posts/:year/:month/:day       ::getAllPublishedPostsByDay <br />
  
       (USERS OBJECT)
- |-> /api/users/                        :get all users
- |-> /api/users/:id                	:get user by ID
+ |-> /api/users/                        :get all users <br />
+ |-> /api/users/:id                	:get user by ID <br />
 
 
       (CATEGORY OBJECT)
- |-> /api/category/              	:get all category
- |-> /api/category/:cat_name            :get all published posts by category name (Not yet implemented)
+ |-> /api/category/              	:get all category <br />
+ |-> /api/category/:cat_name            :get all published posts by category name (Not yet implemented) <br />
 
 
       (ADVERTISEMENT OBJECT)
- |-> /api/ads/                   	:get all Advertisements 
- |-> /api/ads/:id               	:get Advertisement by id (not implemented)
+ |-> /api/ads/                   	:get all Advertisements  <br />
+ |-> /api/ads/:id               	:get Advertisement by id (not implemented) <br />
 
 
       (SUSCRIBER OBJECT)
- |-> /api/subscribers/          	:get all subscriber 
- |-> /api/subscribers/:id        	:get subscriber by id 
+ |-> /api/subscribers/          	:get all subscriber  <br />
+ |-> /api/subscribers/:id        	:get subscriber by id  <br />
 
 
 #POST METHOD
 
-     (For Posts object)
- |-> /api/posts/                        :Create New post (Unautorized used cannot create post only admin and Editor can)
+     (For Posts object) <br />
+ |-> /api/posts/                        :Create New post (Unautorized used cannot create post only admin and Editor can) <br />
  
-     (For USERS object)
- |-> /api/users/                        :Create New User (Only by admin)
+     (For USERS object) <br />
+ |-> /api/users/                        :Create New User (Only by admin) <br />
 
       (CATEGORY OBJECT)
- |-> /api/category/                     :create new category (Only by admin)
+ |-> /api/category/                     :create new category (Only by admin) <br />
 
       (ADVERTISEMENT OBJECT)
- |-> /api/ads/                          :Create new Advertisement 
+ |-> /api/ads/                          :Create new Advertisement  <br />
 
 
    (SUSCRIBER OBJECT)
- |-> /api/subscribers/                  :create new subscriber 
+ |-> /api/subscribers/                  :create new subscriber  <br />
 
 
 #DELETE METHOD
      (For POSTS object)
- |-> /api/posts/id/:id                  : Delete only self published post for Editor level
+ |-> /api/posts/id/:id                  : Delete only self published post for Editor level <br />
  
      (For USERS object)
- |-> /api/users/:id                     :Delete User By ID (Only by admin)
+ |-> /api/users/:id                     :Delete User By ID (Only by admin) <br />
 
 
       (CATEGORY OBJECT)
- |-> /api/category/:id                  :Delete Category By ID (Only by admin)
+ |-> /api/category/:id                  :Delete Category By ID (Only by admin) <br />
 
 
       (ADVERTISEMENT OBJECT)
- |-> /api/ads/:id                       :Delete Advertisement by id 
+ |-> /api/ads/:id                       :Delete Advertisement by id  <br />
 
 
 
  (SUSCRIBER OBJECT)
- |-> /api/subscribers/:id               :Delete Subscriber by id
+ |-> /api/subscribers/:id               :Delete Subscriber by id <br />
 
 
 
 #PATCH METHOD
      (For POSTS object)
- |-> /api/posts/:id                     : Update only self published post for Editor level
+ |-> /api/posts/:id                     : Update only self published post for Editor level <br />
 
      (For USERS object)
- |-> /api/users/:id                     :Update User By ID (Only by admin)
+ |-> /api/users/:id                     :Update User By ID (Only by admin) <br />
 
       (CATEGORY OBJECT)
- |-> /api/category/:id                  :Update Category By ID (Only by admin)
+ |-> /api/category/:id                  :Update Category By ID (Only by admin) <br />
 
       (ADVERTISEMENT OBJECT)
- |-> /api/ads/:id                       :Update Advertisement by id 
+ |-> /api/ads/:id                       :Update Advertisement by id  <br />
 
  (SUSCRIBER OBJECT)
- |-> /api/subscribers/:id               :Update Subscriber by id
+ |-> /api/subscribers/:id               :Update Subscriber by id <br />
 
 
 
