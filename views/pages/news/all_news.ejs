@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head links -->
+  <!-- <div class="absolute z-1000 bg-red-500 h-50 w-50 shadow">hello</div> -->
+  <%- include('../../includes/head.ejs'); %>
+
+  <body>
+    <!-- header nav links -->
+
+    <%- include('../../includes/header.ejs'); %>
+
+    <!-- sidebar -->
+
+    <%- include('../../includes/sidebar.ejs'); %>
+    <!-- main content -->
+
+    <section class="right_side">
+      <div class="page_content">
+        <div class="row_1">
+          <span class="text_1">ADMIN DASHBOARD</span>
+          <span class="text_2"><a href="/admin">Home </a>| Dashboard</span>
+        </div>
+
+        <section class="all_news_table row_2">
+          <table id="myTable" class="display">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th id="tblth">Image</th>
+                <th id="tblth">Title</th>
+                <th title="Category/Sub-category">Category</th>
+                <th>Date</th>
+                <th>Publish Status</th>
+                <th>Breaking News</th>
+                <th>Visitors</th>
+                <th>News Speciality</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Starts -->
+              <% all_posts.forEach(function callback(post, index) { %>
+              <tr>
+                <td class="td_1"><%= index+1 %></td>
+                <td class="td_2"><img src="/img/news-1.jpg" /></td>
+                <td title="<%= post.post_title%>" class="td_3" id="td_3">
+                  <a
+                    href="#"
+                    style="color: rgb(70, 69, 69); text-decoration: none"
+                  >
+                    <%= post.post_title.substring(0,65) %> .....
+                  </a>
+                </td>
+                <td class="td_4">
+                  <li>hello</li>
+                </td>
+                <td class="td_5">
+                  Created:<%= post.created_at %> <br />
+                  Updated:<%= post.updated_at %>
+                </td>
+                <td class="td_6">
+                  <div class="form-check form-switch">
+                    <input class="switch form-check-input" type="checkbox"
+                    role="switch" id="flexSwitchCheckChecked" <%
+                    if(post.post_status === "published"){ %> checked <% } %> />
+                  </div>
+                  <li style="list-style: none"><%= post.post_status %></li>
+                </td>
+                <td class="td_7">
+                  <div class="form-check form-switch">
+                    <input
+                      class="switch form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      id="flexSwitchCheckChecked"
+                      checked
+                    />
+                  </div>
+                </td>
+                <td class="td_8"><strong>200</strong></td>
+                <td class="td_9"><span>Top News</span></td>
+                <td class="td_10">
+                  <a href="#"
+                    ><i id="setting" class="options option_1 bi bi-gear"></i
+                  ></a>
+                  <a class="info" href="#" title="View Post"
+                    ><i class="options option_2 bi bi-info-circle-fill"></i
+                  ></a>
+                  <a id="view" href="#" title="View Post"
+                    ><i class="options option_3 bi bi-eye"></i
+                  ></a>
+                  <a class="edit" href="#" title="Edit Post"
+                    ><i id="edit" class="options option_4 bi bi-pencil-square"></i
+                  ></a>
+                  <a class="archive" href="#" title="Archive Post"
+                    ><i class="options option_5 bi bi-archive"></i
+                  ></a>
+                  <a class="trash" href="#" title="Delete Post"
+                    ><i class="options option_6 bi bi-trash"></i
+                  ></a>
+                </td>
+              </tr>
+              <% }); %>
+              <!-- ends -->
+            </tbody>
+          </table>
+        </section>
+        <div id="overlay"></div>
+        <div id="centeredDiv">
+          <h2>Centered Div</h2>
+          <p>Click outside the div to close.</p>
+        </div>
+    </section>
+
+    <!-- footer content -->
+    <%- include('../../includes/footer.ejs'); %>
+  </body>
+</html>

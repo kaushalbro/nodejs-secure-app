@@ -1,87 +1,87 @@
-const query = require("../db/sqlquery");
-const bodyFieldcheck = require("../helpers/bodyFieldcheck");
-const encrypt = require("../helpers/encrypt");
+const User = require("../models/User");
 
-// /user
-exports.getAlluser = (req, res) => {
-  query
-    .getall("users")
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((error) => {
-      res.status(404).json("can not get all users: " + error);
-    });
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@                                                       GET METHOD                                                          @
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+exports.getAlluser = async (req, res) => {
+  let users = await User.All();
+  return res.status(200).json(users);
+};
+exports.getUserById = async (req, res) => {
+  const param_user_id = parseInt(req.params.id);
+  const token_user_id = req.token_user.user_id;
+  const token_user_level = req.token_user.user_level;
+  // level 1 user can only seen his profile not others
+  if (token_user_level === 1) {
+    if (param_user_id !== token_user_id) {
+      return res.status(401).json({ message: "Invalid token" });
+    }
+  }
+  let user = await User.oneByID(token_user_id);
+  res.status(200).json(user);
+};
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@                                                       POST METHOD                                                         @
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+exports.create = async (req, res) => {
+  const new_user = req.body;
+  console.log(new_user);
+  return res.status(200).json(new_user);
 };
 
-exports.getUserById = (req, res) => {
-  query
-    .getbyOne("users", "user_id", req.params.id)
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((error) => {
-      res.status(404).json("can not get all users: " + error);
-    });
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@                                                       UPDATE METHOD                                                       @
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+exports.update = async (req, res) => {
+  const user_id = req.params.id;
+  const fields_to_update = req.body;
+  try {
+    const updatePost = await User.updateUser(user_id, fields_to_update);
+    if (updatePost.changedRows === 0) {
+      return res.status(404).json("no field updated");
+    }
+    return res.status(200).json("updated successfully...");
+  } catch (error) {
+    return res
+      .status(404)
+      .json("Error occur cann't proceed might be wrong field name not found");
+  }
 };
 
-//register new user
-exports.registerUser = (req, res) => {
-  //getting new user details
-  const { username, email, password } = req.body;
-  //checking if any supplie field in request is empty or not
-  var fieldValue = bodyFieldcheck.check(req.body);
-  //if all field has value
-  if (fieldValue.length === 0) {
-    //check if supplied username is in database or not
-    query
-      .isUser(username)
-      .then((isUserExists) => {
-        if (isUserExists) {
-          //if user exists then send respond :already  user exists
-          res
-            .status(404)
-            .json(
-              "username already exists:: try again with another username.. "
-            );
-        } else {
-          //if not usename in the database then only proceed
-          encrypt
-            .encode(password) // than encrypt password
-            .then((hashedPassword) => {
-              return hashedPassword; //return encrypted
-            })
-            .then((hashedPassword) => {
-              return query.insertIntoTable(
-                "users",
-                "user_name",
-                "user_email",
-                "password",
-                username,
-                email,
-                hashedPassword
-              );
-            })
-            .then((result) => {
-              if (result.affectedRows == 1) {
-                res
-                  .status(201)
-                  .json("user: " + username + " inserted successfully .... ");
-              } else {
-                res
-                  .status(201)
-                  .json("problem while signning up with user " + username);
-              }
-            })
-            .catch((error) => {
-              res.status(404).json(error);
-            });
-        }
-      })
-      .catch((error) => {
-        res.status(404).json(error);
-      });
-  } else {
-    res.status(404).json(fieldValue);
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@                                                       DELETE METHOD                                                       @
+//@                                                                                                                           @
+//@                                                                                                                           @
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+exports.deleteUser = async (req, res) => {
+  const user_id = req.params.id;
+  try {
+    const user = await User.oneByID(user_id);
+    if (user.length === 0) {
+      return res.status(404).json("user not found of this id.");
+    }
+    await User.deleteUser(user_id);
+    return res.status(200).json("user deleted successfully.");
+  } catch (error) {
+    console.log(error);
+    return res.status(200).json("error occured: please contact IT team");
   }
 };

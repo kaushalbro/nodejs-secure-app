@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head links -->
+
+  <%- include('../../includes/head.ejs'); %>
+  <body>
+    <!-- header nav links -->
+    <%- include('../../includes/header.ejs'); %>
+    <!-- sidebar -->
+    <%- include('../../includes/sidebar.ejs'); %>
+    <!-- main content -->
+
+    <main id="main" class="main all_news_main">
+      <div class="pagetitle">
+        <h1>NEWS</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">News</li>
+          </ol>
+        </nav>
+      </div>
+
+      <section class="all_news_table">
+        <table>
+          <thead>
+            <tr>
+              <th id="tblth">
+                Id <span class="icon-arrow arrow">&UpArrow;</span>
+              </th>
+              <th id="tblth">
+                Name <span class="icon-arrow arrow">&UpArrow;</span>
+              </th>
+              <th id="tblth">
+                About <span class="icon-arrow arrow">&UpArrow;</span>
+              </th>
+              <th title="Category/Sub-category">
+                Created_At<span class="icon-arrow arrow">&UpArrow;</span>
+              </th>
+              <th>
+                Updated_At <span class="icon-arrow arrow">&UpArrow;</span>
+              </th>
+              <th>Options<span class="icon-arrow arrow">&UpArrow;</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Starts -->
+            <% cat.forEach(function callback(post, index) { %>
+            <tr>
+              <td class="td_1"><%= index+1 %></td>
+              <td title="" class="td_3">
+                <a href="#" style="color: rgb(70, 69, 69)">
+                  <%= post.name %>
+                </a>
+              </td>
+              <td class="td_4"><%= post.about %></td>
+              <td class="td_5" style="text-align: center">
+                <%= post.created_at %>
+              </td>
+              <td class="td_8" style="text-align: center">
+                <%= post.updated_at %>
+              </td>
+              <td class="td_10">
+                <a href="#"
+                  ><i id="setting" class="options option_1 bi bi-gear"></i
+                ></a>
+                <a class="info" href="#" title="View Post"
+                  ><i class="options option_2 bi bi-info-circle-fill"></i
+                ></a>
+                <a id="view" href="#" title="View Post"
+                  ><i class="options option_3 bi bi-eye"></i
+                ></a>
+                <a class="edit" href="#" title="Edit Post"
+                  ><i class="options option_4 bi bi-pencil-square"></i
+                ></a>
+                <a class="archive" href="#" title="Archive Post"
+                  ><i class="options option_5 bi bi-archive"></i
+                ></a>
+                <a class="trash" href="#" title="Delete Post"
+                  ><i class="options option_6 bi bi-trash"></i
+                ></a>
+              </td>
+            </tr>
+            <% }); %>
+            <!-- ends -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <!-- footer content -->
+    <%- include('../../includes/footer.ejs'); %>
+  </body>
+</html>

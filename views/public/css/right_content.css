@@ -1,0 +1,69 @@
+.right_side {
+  position: relative;
+  background: #f6f9ff;
+  /* border: 1px solid red; */
+  /* overflow: scroll; */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  width: 100%;
+  height: 100vh;
+  left: 235px;
+  width: calc(100% - 235px);
+  transition: all 0.2s ease;
+}
+
+.sidebar.close ~ .right_side {
+  left: 78px;
+  width: calc(100% - 78px);
+}
+
+.right_side .page_content {
+  position: relative;
+  width: 100%;
+  /* padding: 10px; */
+}
+
+.page_content .row_1 {
+  padding-left: 10px;
+  /* position: fixed; */
+  width: 100%;
+  height: 75px;
+  margin: 2px 5px 0px 5px;
+  /* margin-right: 3px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.row_1 .text_1 {
+  font-size: 25px;
+  font-weight: 350;
+}
+.row_1 .text_2 {
+  font-size: 15px;
+  font-weight: 550;
+  color: rgb(81, 81, 81);
+}
+.row_1 .text_2 a {
+  color: rgb(163, 224, 250);
+  text-decoration: none;
+}
+
+.page_content .row_2 {
+  position: absolute;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  height: 79vh;
+  /* border: 1px solid red; */
+  top: 75px;
+  width: 100%;
+  /* z-index: 1; */
+}
+
+.row_2::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

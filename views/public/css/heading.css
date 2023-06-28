@@ -1,0 +1,73 @@
+/* Google Fonts Import Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  overflow: hidden;
+}
+
+.main_nav_heading {
+  /* position: sticky; */
+  background: #8898c5;
+  width: 100%;
+  /* padding-left: 250px; */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* z-index: 100; */
+  /* background-color: red; */
+  /* box-shadow: rgba(166, 162, 162, 0.5) 0px 4px 10px; */
+  height: 55px;
+  /* border: 1px solid green; */
+}
+
+.logo_name:hover {
+  cursor: pointer;
+}
+.logo-details {
+  height: 60px;
+  /* width: 100%; */
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.logo-details i {
+  font-size: 30px;
+  color: #fff;
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+}
+.logo-details .logo_name {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+  transition-delay: 0.1s;
+}
+.sidebar.close .logo-details .logo_name {
+  transition-delay: 0s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.main_nav_heading .bx-menu,
+.main_nav_heading .text {
+  color: #11101d;
+  font-size: 30px;
+}
+
+.main_nav_heading .bx-menu {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.main_nav_heading .text {
+  font-size: 23px;
+  font-weight: 600;
+}
