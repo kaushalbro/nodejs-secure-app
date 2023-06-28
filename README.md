@@ -2,14 +2,14 @@
 
 # ROUTES
 
-  (AUTH ROUTES)
+      (AUTH OBJECT)
    |-> /api/auth/login (GET, POST)     :Get login page and POST user's credentials  <br />
    |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
    |-> /api/auth/signup (GET, POST)     :Get Signup page and POST Signup new user's credentials  <br />
    |-> /api/auth/logout (GET)           :Logout from current logged in session <br />
 
 
-  (REFRESH_TOKEN route)  <br />
+      (REFRESH_TOKEN OBJECT)
    |-> /api/refreshToken/ (GET)         :Get refresh token only if access token is provided and is valid  <br />
 
    (Email verification route)  <br />
