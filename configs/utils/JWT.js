@@ -11,7 +11,11 @@ exports.createAccessToken = (user) => {
       },
       dotenv.access_token_key,
       {
+<<<<<<< HEAD
         expiresIn: "150m",
+=======
+        expiresIn: "5s",
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
       }
     );
     if (!access_token) {

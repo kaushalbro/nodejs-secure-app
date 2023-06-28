@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { host_url } = require("../configs/dotenv_config");
 
 // const fetch = require("node-fetch");
@@ -78,3 +79,16 @@ exports.page = async (req, res) => {
   //   return res.render("../views/pages/user/user.ejs");
   // }
 };
+=======
+const express = require("express");
+const adminViewController = express.Router();
+const { isLevel_0 } = require("../middlewares/userRole");
+const { verifyAccessToken } = require("../middlewares/auth");
+
+adminViewController.get("/", verifyAccessToken, isLevel_0, (req, res) => {
+  // res.render("./home");
+});
+function getAdmin() {}
+
+module.exports = adminViewController;
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e

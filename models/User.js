@@ -48,7 +48,13 @@ exports.verifyUserPassword = async (userName, rawPassword) => {
     const user = await this.isUser("user_name", userName);
     // console.log(user[1][0].account_status);
     if (user.length === 0) {
+<<<<<<< HEAD
       return userName + " does not exit.";
+=======
+      return (
+        "user account invalid: " + `"` + userName + `"` + " does not exit."
+      );
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
     }
     // console.log(user[0].account_status);
 
@@ -57,7 +63,15 @@ exports.verifyUserPassword = async (userName, rawPassword) => {
     }
     const validPassword = encrypt.verify(rawPassword, user[0].password);
     if (!validPassword) {
+<<<<<<< HEAD
       return "password not match, try again...";
+=======
+      return (
+        "user credential invalid: " +
+        userName +
+        "'s password does not match, try again..."
+      );
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
     }
     return user[0];
   } catch (error) {

@@ -13,7 +13,15 @@ const bodyChecker = require("../helpers/bodyFieldcheck");
 exports.getCategory = async (req, res) => {
   //   db.query();
   const allcat = await db.getall(category);
+<<<<<<< HEAD
   return res.status(200).json(allcat);
+=======
+  var cat_names = [];
+  for (const key in allcat) {
+    cat_names.push(allcat[key].name);
+  }
+  return res.status(200).json(cat_names);
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
 };
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

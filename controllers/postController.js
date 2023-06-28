@@ -171,6 +171,7 @@ exports.updatePost = async (req, res) => {
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // GET ALL PUBLISHED POST
 
+<<<<<<< HEAD
 exports.getPosts = async (req, res) => {
   const end_point = req.originalUrl;
   const end_points = end_point
@@ -215,6 +216,16 @@ exports.getPosts = async (req, res) => {
 
 exports.getAllPublishedPosts = async (req, res) => {};
 
+=======
+exports.getAllPublishedPosts = async (req, res) => {
+  const all_posts = await posts.getAllPostWhere_1Col(
+    "post_status",
+    "published"
+  );
+  res.status(200).json(all_posts);
+};
+
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
 //GET ONLY PUBLISHED POST BY ID
 exports.getPublishedPostsById = async (req, res) => {
   const id = parseInt(req.params.id);

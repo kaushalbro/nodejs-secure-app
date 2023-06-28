@@ -10,7 +10,11 @@ const User = require("../models/User");
 
 exports.getAlluser = async (req, res) => {
   let users = await User.All();
+<<<<<<< HEAD
   return res.status(200).json(users);
+=======
+  res.status(200).json(users);
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
 };
 exports.getUserById = async (req, res) => {
   const param_user_id = parseInt(req.params.id);
@@ -36,7 +40,10 @@ exports.getUserById = async (req, res) => {
 exports.create = async (req, res) => {
   const new_user = req.body;
   console.log(new_user);
+<<<<<<< HEAD
   return res.status(200).json(new_user);
+=======
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
 };
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

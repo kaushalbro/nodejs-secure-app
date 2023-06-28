@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <!-- head links -->
   <%- include('./includes/head.ejs'); %>
   <body>
@@ -113,4 +114,35 @@
     </main>
     <%- include('./includes/footer.ejs'); %>
   </body>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login page</title>
+  </head>
+  <body>
+    <form id="form" action="/api/auth/login" method="POST">
+      <h1>LOGIN</h1>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          required
+        />
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          required
+        />
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </body>
+  <!-- <script src="./js/main.js"></script> -->
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
 </html>

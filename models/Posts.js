@@ -44,10 +44,13 @@ exports.updatePostByIdAndauthor_id = async (postID, authID, body) => {
 //@                                                                                                                           @
 //@                                                                                                                           @
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+<<<<<<< HEAD
 exports.getAll = async () => {
   const posts = await db.query("select * from ??", ["posts"]);
   return posts;
 };
+=======
+>>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
 
 exports.getAllPostWhere_2Col = async (
   col_name_1,
