@@ -11,18 +11,15 @@ const role = require("../middlewares/userRole");
 postRouter
   .get("/", postContoller.getAllPublishedPosts)
   .get("/id/:id", postContoller.getPublishedPostsById)
-<<<<<<< HEAD
   // get /posts/published, /deleted /archived / drafted
   .get("/:status", postContoller.getPosts)
   // get by /posts/author
   .get("/author/:author_name", postContoller.getAllPublishedPostsByAuthorName)
   .get("/category/:category_id", postContoller.getAllPublishedPostsByCategoryID)
   // .get("/:year", postContoller.getAllPublishedPostsByYear)
-=======
   .get("/author/:author_name", postContoller.getAllPublishedPostsByAuthorName)
   .get("/category/:category_id", postContoller.getAllPublishedPostsByCategoryID)
   .get("/:year", postContoller.getAllPublishedPostsByYear)
->>>>>>> d8823b6f3a29c279c492b7aaba34be9f0765266e
   .get("/:year/:month", postContoller.getAllPublishedPostsByMonth)
   .get("/:year/:month/:day", postContoller.getAllPublishedPostsByDay)
   .post("/", postContoller.createPost)
