@@ -1,4 +1,4 @@
-﻿﻿# nodejs-secure-app # BLOG API/E_NEWSPAPER API (MVC PATTERN)
+﻿﻿# nodejs-secure-app # BLOG API/E_NEWSPAPER API (MVC PATTERN) BY Kaushal 
 
 Note: Used free templates for admin panel for frontend for now
 
